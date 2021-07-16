@@ -9,15 +9,25 @@ public class LightSettingsPlayer : MonoBehaviour {
     [SerializeField] PostProcessProfile standard;
     [SerializeField] PostProcessProfile nightVision;
     [SerializeField] GameObject nightVisionOverlay;
+    [SerializeField] GameObject flashlight;
 
     private bool nightVisionActive = false;
+    private bool flashlightActive = false;
 
     void Start() {
 
         nightVisionOverlay.gameObject.SetActive(false);
+        flashlight.gameObject.SetActive(false);
     }
 
     void Update() {
+
+        toggleNightVision();
+        toggleFlashlight();
+
+    }
+
+    private void toggleNightVision() {
 
         if (Input.GetKeyDown(KeyCode.N)) {
 
@@ -33,4 +43,21 @@ public class LightSettingsPlayer : MonoBehaviour {
 
         }
     }
+
+    private void toggleFlashlight() {
+
+        if (Input.GetKeyDown(KeyCode.F)) {
+
+            if (flashlightActive == false) {
+                flashlight.gameObject.SetActive(true);
+                flashlightActive = true;
+            } else {
+                flashlight.gameObject.SetActive(false);
+                flashlightActive = false;
+            }
+
+        }
+    }
 }
+
+
