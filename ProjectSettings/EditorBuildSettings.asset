@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Levels/HorrorScene.unity
+    guid: c03237d8a9ccf874796b7a4a9a149c07
   m_configObjects: {}
