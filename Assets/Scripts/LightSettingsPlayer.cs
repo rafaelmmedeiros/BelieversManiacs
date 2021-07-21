@@ -18,6 +18,7 @@ public class LightSettingsPlayer : MonoBehaviour {
 
         nightVisionOverlay.gameObject.SetActive(false);
         flashlight.gameObject.SetActive(false);
+
     }
 
     void Update() {
