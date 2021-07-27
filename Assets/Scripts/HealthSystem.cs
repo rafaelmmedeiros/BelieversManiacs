@@ -14,9 +14,6 @@ public class HealthSystem : MonoBehaviour {
 
     void Update() {
 
-        // Gambiarra temporaria, trocar tudo para sistema de events
-        // Coisa feia...
-
         if (Player.healthChanged) {
             UpdateHealthAmounth();
             Player.healthChanged = false;
