@@ -5,40 +5,41 @@ using UnityEngine.UI;
 
 public class Battery : MonoBehaviour {
 
-    private bool classDebuMode = true;
-
     [SerializeField] Image foregroundIcon;
-    [SerializeField] float drainTime = 15.0f;
-    [SerializeField] float power = 1.0f;
+    [SerializeField] float drainTimeFlashlight;
+    [SerializeField] float drainTimeNightvision;
+    [SerializeField] float power;
 
     void Update() {
         DrainBattery();
-        SetForegroundIcon();
+        UpdateForegroundIcon();
         UpdateSaveScript();
     }
 
     void DrainBattery() {
 
-        if (power > 0) {
-            power -= (1.0f / drainTime) * Time.deltaTime;
+        if (Player.flashlightOn) {
+            if (power > 0) {
+                power -= (1.0f / drainTimeFlashlight) * Time.deltaTime;
+                power = Mathf.Clamp(power, 0, 1);
+            }
+        }
 
-            if (power < 0) {
-                power = 0;
+        if (Player.nightvisionOn) {
+            if (power > 0) {
+                power -= (1.0f / drainTimeNightvision) * Time.deltaTime;
+                power = Mathf.Clamp(power, 0, 1);
             }
         }
     }
 
-    void SetForegroundIcon() {
+    void UpdateForegroundIcon() {
         foregroundIcon.fillAmount = power;
     }
 
     void UpdateSaveScript() {
 
-        SaveScript.batteryPower = power;
+        Player.batteryPower = power;
 
-        // Class Debug
-        if (classDebuMode) {
-            Debug.Log(SaveScript.batteryPower);
-        }
     }
 }
