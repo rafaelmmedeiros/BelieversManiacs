@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class Battery : MonoBehaviour {
 
-    [SerializeField] Image foregroundIcon;
     [SerializeField] float power;
 
     void Update() {
