@@ -17,6 +17,7 @@ public class Battery : MonoBehaviour {
             power -= (1.0f / drainTime) * Time.deltaTime;
             power = Mathf.Clamp(power, 0, 1);
         }
+
     }
 
     public bool HasCharge() {
