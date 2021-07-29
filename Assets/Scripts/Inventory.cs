@@ -8,6 +8,14 @@ public class Inventory : MonoBehaviour {
     [SerializeField] KeyCode keyCode;
     [SerializeField] bool active;
 
+    [SerializeField] GameObject AppleImage1;
+    [SerializeField] GameObject AppleButton1;
+
+    private void Start() {
+        AppleImage1.gameObject.SetActive(false);
+        AppleButton1.gameObject.SetActive(false);
+    }
+
     void Update() {
 
         if (Input.GetKeyDown(keyCode)) {
@@ -18,6 +26,8 @@ public class Inventory : MonoBehaviour {
                 ToggleOff();
             }
         }
+
+        CheckInvetory();
 
     }
 
@@ -37,5 +47,14 @@ public class Inventory : MonoBehaviour {
         Cursor.visible = false;
 
         Time.timeScale = 1f;
+    }
+
+    private void CheckInvetory() {
+
+        if(Player.apples >= 1) {
+            AppleImage1.gameObject.SetActive(true);
+            AppleButton1.gameObject.SetActive(true);
+        }
+
     }
 }

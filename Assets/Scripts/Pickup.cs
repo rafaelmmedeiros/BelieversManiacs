@@ -24,9 +24,14 @@ public class Pickup : MonoBehaviour {
 
             if (raycastHit.transform.tag == "Apple") {
                 pickupInRange = true;
+                if (Input.GetKeyDown(KeyCode.E)) {
+                    Destroy(raycastHit.transform.gameObject);
+                    Player.apples++;
+                }
             } else {
                 pickupInRange = false;
             }
+
         }
 
         if (pickupInRange == true) {
@@ -38,6 +43,5 @@ public class Pickup : MonoBehaviour {
             pickupMessage.gameObject.SetActive(false);
             raycastDistance = distance;
         }
-
     }
 }
