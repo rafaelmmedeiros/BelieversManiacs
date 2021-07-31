@@ -3,25 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthSystem : MonoBehaviour {
+public class HealthSystem : MonoBehaviour
+{
 
     [SerializeField] Text healthText;
 
-    void Start() {
+    void Start()
+    {
 
         UpdateHealthAmounth();
     }
 
-    void Update() {
+    void Update()
+    {
 
-        if (Player.healthChanged) {
+        if (Player.healthChanged)
+        {
             UpdateHealthAmounth();
             Player.healthChanged = false;
         }
 
     }
 
-    private void UpdateHealthAmounth() {
+    private void UpdateHealthAmounth()
+    {
         healthText.text = Player.playerHealth + "%";
     }
 }

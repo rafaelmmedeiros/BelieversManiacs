@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class CharControllerMotor : MonoBehaviour {
+public class CharControllerMotor : MonoBehaviour
+{
 
     public float speed = 10.0f;
     public float sensitivity = 30.0f;
@@ -22,19 +23,25 @@ public class CharControllerMotor : MonoBehaviour {
     private float minPitch = -30f;
     private float maxPitch = 30f;
 
-    void Start() {
+    void Start()
+    {
         character = GetComponent<CharacterController>();
     }
 
-    void CheckForWaterHeight() {
-        if (transform.position.y < WaterHeight) {
+    void CheckForWaterHeight()
+    {
+        if (transform.position.y < WaterHeight)
+        {
             gravity = 0f;
-        } else {
+        }
+        else
+        {
             gravity = -9.8f;
         }
     }
 
-    void Update() {
+    void Update()
+    {
         moveFB = Input.GetAxis("Horizontal") * speed;
         moveLR = Input.GetAxis("Vertical") * speed;
 
@@ -48,13 +55,15 @@ public class CharControllerMotor : MonoBehaviour {
 
         CameraRotation(cam, yaw, pitch);
 
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) {
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+        {
             movement = transform.rotation * movement;
         }
 
         character.Move(movement * Time.deltaTime);
     }
-    void CameraRotation(GameObject cam, float yaw, float pitch) {
+    void CameraRotation(GameObject cam, float yaw, float pitch)
+    {
         transform.eulerAngles = new Vector3(pitch, yaw, 0f);
         cam.transform.eulerAngles = new Vector3(pitch, yaw, 0f);
     }

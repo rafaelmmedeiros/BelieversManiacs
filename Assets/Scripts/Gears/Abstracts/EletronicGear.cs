@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class EletronicGear : MonoBehaviour {
+public abstract class EletronicGear : MonoBehaviour
+{
 
     [SerializeField] protected float drainTime;
     [SerializeField] protected KeyCode keycode;
@@ -10,26 +11,34 @@ public abstract class EletronicGear : MonoBehaviour {
 
     protected Battery battery;
 
-    protected void Update() {
+    protected void Update()
+    {
 
-        if (Input.GetKeyDown(keycode)) {
+        if (Input.GetKeyDown(keycode))
+        {
 
-            if (active == false) {
+            if (active == false)
+            {
 
-                if (battery.HasCharge()) {
+                if (battery.HasCharge())
+                {
                     ToggleOn();
                 }
 
-            } else {
+            }
+            else
+            {
                 ToggleOff();
             }
         }
 
-        if (active) {
+        if (active)
+        {
             battery.DrainBattery(drainTime);
         }
 
-        if (!battery.HasCharge()) {
+        if (!battery.HasCharge())
+        {
             ToggleOff();
         }
 

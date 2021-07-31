@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pickup : MonoBehaviour {
+public class Pickup : MonoBehaviour
+{
 
     RaycastHit raycastHit;
     [SerializeField] float distance;
@@ -11,35 +12,44 @@ public class Pickup : MonoBehaviour {
     private float raycastDistance;
     private bool pickupInRange;
 
-    void Start() {
+    void Start()
+    {
 
         pickupInRange = false;
         pickupMessage.gameObject.SetActive(false);
         raycastDistance = distance;
     }
 
-    void Update() {
+    void Update()
+    {
 
-        if (Physics.Raycast(transform.position, transform.forward, out raycastHit, raycastDistance)) {
+        if (Physics.Raycast(transform.position, transform.forward, out raycastHit, raycastDistance))
+        {
 
-            if (raycastHit.transform.tag == "Apple") {
+            if (raycastHit.transform.tag == "Apple")
+            {
                 pickupInRange = true;
-                if (Input.GetKeyDown(KeyCode.E)) {
+                if (Input.GetKeyDown(KeyCode.E))
+                {
                     Destroy(raycastHit.transform.gameObject);
                     Player.apples++;
                 }
-            } else {
+            }
+            else
+            {
                 pickupInRange = false;
             }
 
         }
 
-        if (pickupInRange == true) {
+        if (pickupInRange == true)
+        {
             pickupMessage.gameObject.SetActive(true);
             raycastDistance = 1000f;
         }
 
-        if (pickupInRange == false) {
+        if (pickupInRange == false)
+        {
             pickupMessage.gameObject.SetActive(false);
             raycastDistance = distance;
         }

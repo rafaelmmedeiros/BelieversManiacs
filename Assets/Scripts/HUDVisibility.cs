@@ -2,29 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HUDVisibility : MonoBehaviour {
+public class HUDVisibility : MonoBehaviour
+{
 
     [SerializeField] GameObject health;
     [SerializeField] GameObject battery;
     [SerializeField] GameObject inventory;
 
-    private void Start() {
+    private void Start()
+    {
         health.SetActive(true);
         battery.SetActive(true);
 
         Cursor.visible = false;
     }
 
-    void Update() {
+    void Update()
+    {
 
 
     }
 
-    public void SetInvetoryActive() {
+    public void SetInvetoryActive()
+    {
         inventory.SetActive(true);
     }
 
-    public void SetInvetoryDesactive() {
+    public void SetInvetoryDesactive()
+    {
         inventory.SetActive(false);
     }
 
