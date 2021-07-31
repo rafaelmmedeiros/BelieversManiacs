@@ -10,6 +10,12 @@ public class Battery : MonoBehaviour
 
     void Update()
     {
+        if (Player.isChargingBattery)
+        {
+            power = 1f;
+            Player.isChargingBattery = false;
+        }
+
         UpdatePlayer();
     }
 

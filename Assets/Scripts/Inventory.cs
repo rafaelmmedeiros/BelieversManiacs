@@ -12,14 +12,25 @@ public class Inventory : MonoBehaviour
     [SerializeField] GameObject AppleImage1;
     [SerializeField] GameObject AppleButton1;
 
+    [SerializeField] GameObject BatteryImage1;
+    [SerializeField] GameObject BatteryButton1;
+    [SerializeField] GameObject BatteryImage2;
+    [SerializeField] GameObject BatteryButton2;
+    [SerializeField] GameObject BatteryImage3;
+    [SerializeField] GameObject BatteryButton3;
+    [SerializeField] GameObject BatteryImage4;
+    [SerializeField] GameObject BatteryButton4;
+
     private void Start()
     {
-        AppleImage1.gameObject.SetActive(false);
-        AppleButton1.gameObject.SetActive(false);
+        ResetInventory();
+
+
     }
 
     void Update()
     {
+        ResetInventory();
 
         if (Input.GetKeyDown(keyCode))
         {
@@ -65,6 +76,28 @@ public class Inventory : MonoBehaviour
             AppleImage1.gameObject.SetActive(true);
             AppleButton1.gameObject.SetActive(true);
         }
+
+        // Batteries
+        if (Player.batteries >= 1)
+        {
+            BatteryImage1.gameObject.SetActive(true);
+            BatteryButton1.gameObject.SetActive(true);
+        }
+        if (Player.batteries >= 2)
+        {
+            BatteryImage2.gameObject.SetActive(true);
+            BatteryButton2.gameObject.SetActive(true);
+        }
+        if (Player.batteries >= 3)
+        {
+            BatteryImage3.gameObject.SetActive(true);
+            BatteryButton3.gameObject.SetActive(true);
+        }
+        if (Player.batteries >= 4)
+        {
+            BatteryImage4.gameObject.SetActive(true);
+            BatteryButton4.gameObject.SetActive(true);
+        }
     }
 
     public void IncreaseHealth()
@@ -72,14 +105,26 @@ public class Inventory : MonoBehaviour
         Player.playerHealth += 10;
         Player.apples--;
         Player.healthChanged = true;
-
-        AppleImage1.gameObject.SetActive(false);
-        AppleButton1.gameObject.SetActive(false);
     }
 
     public void IncreaseBattery()
     {
-        Player.batteryPower = 1;
+        Player.isChargingBattery = true;
         Player.batteries--;
+    }
+
+    private void ResetInventory()
+    {
+        AppleImage1.gameObject.SetActive(false);
+        AppleButton1.gameObject.SetActive(false);
+
+        BatteryImage1.gameObject.SetActive(false);
+        BatteryButton1.gameObject.SetActive(false);
+        BatteryImage2.gameObject.SetActive(false);
+        BatteryButton2.gameObject.SetActive(false);
+        BatteryImage3.gameObject.SetActive(false);
+        BatteryButton3.gameObject.SetActive(false);
+        BatteryImage4.gameObject.SetActive(false);
+        BatteryButton4.gameObject.SetActive(false);
     }
 }

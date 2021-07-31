@@ -35,6 +35,15 @@ public class Pickup : MonoBehaviour
                     Player.apples++;
                 }
             }
+            else if (raycastHit.transform.tag == "Battery")
+            {
+                pickupInRange = true;
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    Destroy(raycastHit.transform.gameObject);
+                    Player.batteries++;
+                }
+            }
             else
             {
                 pickupInRange = false;
