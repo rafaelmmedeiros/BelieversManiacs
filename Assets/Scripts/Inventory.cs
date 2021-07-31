@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Inventory : MonoBehaviour {
+public class Inventory : MonoBehaviour
+{
 
     [SerializeField] GameObject invetory;
     [SerializeField] KeyCode keyCode;
@@ -11,18 +12,24 @@ public class Inventory : MonoBehaviour {
     [SerializeField] GameObject AppleImage1;
     [SerializeField] GameObject AppleButton1;
 
-    private void Start() {
+    private void Start()
+    {
         AppleImage1.gameObject.SetActive(false);
         AppleButton1.gameObject.SetActive(false);
     }
 
-    void Update() {
+    void Update()
+    {
 
-        if (Input.GetKeyDown(keyCode)) {
+        if (Input.GetKeyDown(keyCode))
+        {
 
-            if (active == false) {
+            if (active == false)
+            {
                 ToggleOn();
-            } else {
+            }
+            else
+            {
                 ToggleOff();
             }
         }
@@ -31,7 +38,8 @@ public class Inventory : MonoBehaviour {
 
     }
 
-    private void ToggleOn() {
+    private void ToggleOn()
+    {
         invetory.SetActive(true);
         active = true;
 
@@ -40,7 +48,8 @@ public class Inventory : MonoBehaviour {
         Time.timeScale = 0f;
     }
 
-    private void ToggleOff() {
+    private void ToggleOff()
+    {
         invetory.SetActive(false);
         active = false;
 
@@ -49,12 +58,28 @@ public class Inventory : MonoBehaviour {
         Time.timeScale = 1f;
     }
 
-    private void CheckInvetory() {
-
-        if(Player.apples >= 1) {
+    private void CheckInvetory()
+    {
+        if (Player.apples >= 1)
+        {
             AppleImage1.gameObject.SetActive(true);
             AppleButton1.gameObject.SetActive(true);
         }
+    }
 
+    public void IncreaseHealth()
+    {
+        Player.playerHealth += 10;
+        Player.apples--;
+        Player.healthChanged = true;
+
+        AppleImage1.gameObject.SetActive(false);
+        AppleButton1.gameObject.SetActive(false);
+    }
+
+    public void IncreaseBattery()
+    {
+        Player.batteryPower = 1;
+        Player.batteries--;
     }
 }
